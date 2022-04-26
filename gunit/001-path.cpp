@@ -38,9 +38,14 @@ class BuildPathV1Test : public ::testing::Test {
 		const int ENTRY_CNT = 6;
 		int i, ret;
 
-		memset(&cg_mount_table, 0, sizeof(cg_mount_table));
+		cg_controller_max = ENTRY_CNT;
+		cg_mount_table = new cg_mount_table_s[cg_controller_max];
+		ASSERT_NE(cg_mount_table, nullptr);
+
 		memset(cg_namespace_table, 0,
 			CG_CONTROLLER_MAX * sizeof(cg_namespace_table[0]));
+		memset(cg_mount_table, 0,
+			cg_controller_max * sizeof(cg_mount_table[0]));
 
 		// Populate the mount table
 		for (i = 0; i < ENTRY_CNT; i++) {
