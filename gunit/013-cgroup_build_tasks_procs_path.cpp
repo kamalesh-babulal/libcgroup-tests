@@ -38,7 +38,8 @@ class BuildTasksProcPathTest : public ::testing::Test {
 		const int ENTRY_CNT = 6;
 		int i, ret;
 
-		memset(&cg_mount_table, 0, sizeof(cg_mount_table));
+		memset(cg_mount_table, 0,
+		       cg_controller_max * sizeof(cg_mount_table[0]));
 		memset(cg_namespace_table, 0,
 			CG_CONTROLLER_MAX * sizeof(cg_namespace_table[0]));
 
