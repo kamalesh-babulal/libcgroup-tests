@@ -55,7 +55,8 @@ class CgroupCreateCgroupTest : public ::testing::Test {
 		 * Artificially populate the mount table with local
 		 * directories
 		 */
-		memset(&cg_mount_table, 0, sizeof(cg_mount_table));
+		memset(cg_mount_table, 0,
+		       cg_controller_max * sizeof(cg_mount_table[0]));
 		memset(&cg_namespace_table, 0, sizeof(cg_namespace_table));
 
 		for (i = 0; i < CONTROLLERS_CNT; i++) {
