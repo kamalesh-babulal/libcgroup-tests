@@ -89,6 +89,10 @@ def test(config):
         result = consts.TEST_FAILED
         cause = 'Expected cgsnapshot result did not equal actual cgsnapshot'
 
+        print("=========expected======= [%s]==" % expected[CGNAME])
+        print(expected)
+        print("=========Actual========= [%s]==" % actual[CGNAME])
+
     return result, cause
 
 
